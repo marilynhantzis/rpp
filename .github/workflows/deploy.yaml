@@ -29,7 +29,6 @@ jobs:
 
   test:  
     runs-on: ubuntu-latest  
-    needs: lint  
     steps: 
       - name: извлечение кода
         uses: actions/checkout@v2
@@ -53,7 +52,6 @@ jobs:
 
   security:  
     runs-on: ubuntu-latest  
-    needs: test  
     steps:  
       - name: извлечение кода
         uses: actions/checkout@v2
@@ -73,7 +71,6 @@ jobs:
 
   notify:
     runs-on: ubuntu-latest  
-    needs: [lint, test, security] 
     if: always()  
     steps:
       - name: уведомление тг  
