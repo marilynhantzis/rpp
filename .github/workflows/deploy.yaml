@@ -85,8 +85,8 @@ jobs:
           fi
 
           if [ -n "$MESSAGE" ]; then  # Проверка, что переменная MESSAGE не пустая
-            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TOKEN_BOT }}/sendMessage" \
-            -d chat_id="${{ secrets.CHAT_ID }}" \  # Отправка данных в теле HTTP-запроса
+            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \  # Отправка данных в теле HTTP-запроса
             -d text="$MESSAGE"  # Отправка сообщения с результатом в Telegram
           else
             echo "Сообщение пустое, отправка отменена."  
