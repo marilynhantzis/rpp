@@ -78,7 +78,7 @@ jobs:
           if [ "${{ needs.lint.result }}" == "success" ] && [ "${{ needs.test.result }}" == "success" ] && [ "${{ needs.security.result }}" == "success" ]; then
             MESSAGE="Пайплайн ${{ github.workflow }} успешно выполнен!"  # Сообщение об успешном завершении пайплайна
           else
-            MESSAGE="Пайплайн ${{ github.workflow }} не выполнен"  
+            MESSAGE="Пайплайн ${{ github.workflow }}. Линтер ${{ needs.lint.result }}. Тест ${{ needs.test.result }}. Безопасность${{ needs.security.result }} не выполнен"  
           fi
           
           # Кодировка сообщения
