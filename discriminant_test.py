@@ -10,4 +10,3 @@ class TestQuadraticEquation(unittest.TestCase):
     def test_discriminant_positive(self):
         eq = QuadraticEquation(1, 5, 6)
         self.assertEqual(eq.discriminant(), 1)
-
