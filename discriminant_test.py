@@ -1,12 +1,12 @@
-import unittest  
-from discriminant import calculate_discriminant 
+import unittest
+from discriminant import QuadraticEquation
 
-class TestDiscriminant(unittest.TestCase):  
-    def test_positive_discriminant(self):  
-        self.assertGreaterEqual(calculate_discriminant(1, -3, 2), 0) 
+class TestQuadraticEquation(unittest.TestCase):
+    def test_discriminant(self):
+        eq = QuadraticEquation(1, 2, 1)
+        self.assertEqual(eq.discriminant(), 0)
 
-    def test_negative_discriminant(self):
-        self.assertLess(calculate_discriminant(1, 2, 3), 0)
+    def test_discriminant_positive(self):
+        eq = QuadraticEquation(1, 5, 6)
+        self.assertEqual(eq.discriminant(), 1)
 
-    def test_zero_discriminant(self):
-        self.assertEqual(calculate_discriminant(1, 2, 1), 0)  

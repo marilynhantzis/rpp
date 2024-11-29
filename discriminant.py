@@ -1,10 +1,11 @@
-def calculate_discriminant(a, b, c):  # Функция для расчета дискриминанта
-    return b**2 - 4*a*c  
+def calculate_discriminant(a, b, c):
+    return b**2 - 4*a*c
 
-if __name__ == "__main__":  # Проверяем, является ли скрипт основным
-    a = float(input("Введите коэффициент a: "))
-    b = float(input("Введите коэффициент b: "))  
-    c = float(input("Введите коэффициент c: "))  
-    discriminant = calculate_discriminant(a, b, c)  
-    print(f"Дискриминант: {discriminant}")  
+class QuadraticEquation:
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
 
+    def discriminant(self):
+        return calculate_discriminant(self.a, self.b, self.c)
