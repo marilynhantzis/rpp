@@ -8,5 +8,6 @@ class QuadraticEquation:
         self.b = b
         self.c = c
 
+
     def discriminant(self):
         return calculate_discriminant(self.a, self.b, self.c)
