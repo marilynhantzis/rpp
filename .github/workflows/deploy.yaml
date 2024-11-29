@@ -76,7 +76,21 @@ jobs:
       - name: уведомление тг  
         run: |
           MESSAGE="Пайплайн ${{ github.workflow }} завершен успешно!"
-          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=${MESSAGE}" 
+          
+          # Кодировка сообщения
+          ENCODED_MESSAGE=$(echo $MESSAGE | jq -sRr @uri)
+
+          # Отправка запрос метода
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=${ENCODED_MESSAGE}")
+
+          # Проверка статуса ответа
+          if [ "$RESPONSE" -eq 200 ]; then
+            echo "Сообщение успешно отправлено в Telegram."
+          else
+            echo "Ошибка при отправке сообщения: HTTP статус $RESPONSE"
+            exit 1
+          fi
+
 
       
 
