@@ -8,23 +8,24 @@ on:
 
 jobs:  
   lint:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest  # Используем последнюю версию Ubuntu для выполнения задачи
     steps:
-      - name: Checkout code  
-        uses: actions/checkout@v3 
+      - name: Checkout code  # Извлекаем код из репозитория
+        uses: actions/checkout@v3  # Используем готовое действие для извлечения кода
 
-      - name: Set up Python  
+      - name: Set up Python  # Устанавливаем окружение Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'  
+          python-version: '3.11'  # Указываем версию Python
 
-      - name: Install dependencies  
+      - name: Install dependencies  # Устанавливаем зависимости
         run: |
-          python -m pip install --upgrade pip  
-          pip install flake8 
+          python -m pip install --upgrade pip  # Обновляем pip
+          pip install flake8  # Устанавливаем flake8 для линтинга
 
-      - name: Run flake8  
-        run: flake8 
+      - name: Run flake8  # Запускаем линтер flake8
+        run: flake8 .  # Применяем линтинг ко всему коду в текущей директории
+
 
   test:  
     runs-on: ubuntu-latest  
