@@ -75,6 +75,7 @@ jobs:
     steps:
       - name: уведомление тг  
         run: |
+          MESSAGE="Условие почему-то не работает"
           if [ "${{ needs.lint.result }}" == "success" ] && [ "${{ needs.test.result }}" == "success" ] && [ "${{ needs.security.result }}" == "success" ]; then
             MESSAGE="Пайплайн ${{ github.workflow }} завершен успешно!"
           else
