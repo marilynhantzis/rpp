@@ -79,6 +79,7 @@ jobs:
             MESSAGE="Пайплайн ${{ github.workflow }} успешно выполнен!"  # Сообщение об успешном завершении пайплайна
           else
             MESSAGE="Пайплайн ${{ github.workflow }} не выполнен"  
+          fi
           
           # Кодировка сообщения
           ENCODED_MESSAGE=$(echo $MESSAGE | jq -sRr @uri)
